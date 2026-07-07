@@ -40,7 +40,7 @@ services:
     depends_on:
       - backend
     networks:
-      - libbook-net
+      - staffcar-net
 
 volumes:
   postgres_data:
