@@ -1,5 +1,5 @@
 # --- STAGE 1: Build Vue Application ---
-FROM node:18-alpine AS build-stage
+FROM node:20-alpine AS build-stage
 WORKDIR /app
 
 # Copy the package configs from the immediate build engine context
