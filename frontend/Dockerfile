@@ -2,11 +2,16 @@
 FROM node:18-alpine AS build-stage
 WORKDIR /app
 
-# Ensure we are explicitly copying package files from the build context root
+# Copy the package configs from the immediate build engine context
 COPY package*.json ./
 
+# Run the installation
 RUN npm install
+
+# Copy the rest of the application files
 COPY . .
+
+# Compile production build
 RUN npm run build
 
 # --- STAGE 2: Serve via Nginx ---
