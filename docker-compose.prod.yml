@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: staffcar-db-prod
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_secure_password
+      POSTGRES_DB: staffcar_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+    networks:
+      - staffcar-prod-net
+
+  backend:
+    image: YOUR_DOCKERHUB_USERNAME/midterm-devops-staffcar-api:latest
+    container_name: staffcar-api-prod
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: your_secure_password
+      DB_NAME: staffcar_db
+      DB_PORT: 5432
+    depends_on:
+      - db
+    networks:
+      - staffcar-prod-net
+
+  frontend:
+    image: YOUR_DOCKERHUB_USERNAME/midterm-devops-staffcar-web:latest
+    container_name: staffcar-web-prod
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - staffcar-prod-net
+
+volumes:
+  postgres_prod_data:
+
+networks:
+  staffcar-prod-net:
