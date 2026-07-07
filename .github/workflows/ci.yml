@@ -54,3 +54,4 @@ jobs:
           context: ./frontend
           file: ./frontend/Dockerfile
           push: false
+          no-cache: true
