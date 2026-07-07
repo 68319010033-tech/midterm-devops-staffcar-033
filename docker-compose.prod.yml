@@ -16,7 +16,7 @@ services:
       - staffcar-prod-net
 
   backend:
-    image: somchai191/staffcar-api:latest
+    image: achirawit/staffcar-api:latest
     container_name: staffcar-api-prod
     ports:
       - "3000:3000"
@@ -33,7 +33,7 @@ services:
       - staffcar-prod-net
 
   frontend:
-    image: somchai191/staffcar-web:latest
+    image: achirawit/staffcar-web:latest
     container_name: staffcar-web-prod
     ports:
       - "8080:80"
