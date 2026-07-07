@@ -16,7 +16,7 @@ services:
       - staffcar-prod-net
 
   backend:
-    image: YOUR_DOCKERHUB_USERNAME/midterm-devops-staffcar-api:latest
+    image: somchai191/staffcar-api:latest
     container_name: staffcar-api-prod
     ports:
       - "3000:3000"
@@ -33,14 +33,14 @@ services:
       - staffcar-prod-net
 
   frontend:
-    image: YOUR_DOCKERHUB_USERNAME/midterm-devops-staffcar-web:latest
+    image: somchai191/staffcar-web:latest
     container_name: staffcar-web-prod
     ports:
       - "8080:80"
     depends_on:
       - backend
     networks:
-      - staffcar-prod-net
+      - libbook-prod-net
 
 volumes:
   postgres_prod_data:

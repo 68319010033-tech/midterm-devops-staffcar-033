@@ -1,4 +1,4 @@
-name: StaffCar Continuous Integration
+name: CI - staffcar
 
 on:
   push:
